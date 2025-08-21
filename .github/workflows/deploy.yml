@@ -17,26 +17,33 @@ jobs:
       - name: Setup .NET Core SDK
         uses: actions/setup-dotnet@v4
         with:
+          dotnet-version: '9.0.x'
 
       # Install Node.js for TailwindCSS
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
+          node-version: '20'
 
       # Restore dependencies
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: ./SkopeoWebsite
 
       # Install npm dependencies
       - name: Install npm dependencies
         run: npm install
-        working-directory: ./SkopeoWebsite
 
+      # Build TailwindCSS
+      - name: Build TailwindCSS
+        run: npx tailwindcss -i ./wwwroot/css/app.css -o ./wwwroot/css/tailwind.css --minify
 
       # Publish the app
       - name: Publish .NET Core Project
+        run: dotnet publish SkopeoWebsite.csproj -c Release -o release --nologo
         
+      # Change base-tag in index.html from / to Skopeo to match GitHub Pages repository subdirectory
+      - name: Change base-tag in index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/Skopeo\/" \/>/g' release/wwwroot/index.html
         
       # Copy index.html to 404.html to serve the same file when a file is not found
       - name: copy index.html to 404.html to serve the same file when a file is not found
