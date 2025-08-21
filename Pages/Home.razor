@@ -1,120 +1,281 @@
 ﻿@page "/"
 @using SkopeoWebsite.Components.UI
 
-<PageTitle>Marketing Insights - Маркетинговые исследования</PageTitle>
+<PageTitle>Skopeo - Дизайн Студия</PageTitle>
 
 <!-- Hero Section -->
-<section class="relative bg-white py-20 lg:py-32">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section id="home" class="pb-20 bg-gradient-to-br from-cyan-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 relative z-10">
         <div class="text-center">
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8">
-                <span class="text-blue-800">Marketing</span>
-            <br />
-                <span class="text-gray-900">Insights</span>
-        </h1>
+            <Badge Variant="Badge.BadgeVariant.Secondary" class="mb-4 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-800 shadow-lg backdrop-blur-md">
+                🚀 Новая эра дизайна
+            </Badge>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+                Создаем
+                <span class="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                    удивительные
+                </span>
+                <br />
+                цифровые решения
+            </h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
+                Мы специализируемся на создании современных веб-сайтов, мобильных приложений 
+                и брендинга, которые помогают вашему бизнесу выделиться среди конкурентов.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <Button Size="Button.ButtonSize.Large" Variant="Button.ButtonVariant.Primary">
+                    Начать проект
+                </Button>
+                <Button Variant="Button.ButtonVariant.Outline" Size="Button.ButtonSize.Large">
+                    Посмотреть портфолио
+                </Button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="py-20 bg-white/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                Почему выбирают нас
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Наша команда экспертов использует передовые технологии для создания 
+                исключительных цифровых продуктов.
+            </p>
+        </div>
         
-            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
-                Мы предоставляем профессиональные маркетинговые исследования, которые помогают вашему бизнесу принимать обоснованные решения на основе данных и понимания рынка.
-            </p>
-            
-            <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
-                Наша команда экспертов использует передовые методики анализа для изучения потребительского поведения, конкурентной среды и рыночных тенденций. Мы превращаем сложные данные в понятные выводы и практические рекомендации.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
-                <a href="/contacts" class="bg-blue-800 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                    Связаться с нами
-                </a>
-                <a href="/services" class="border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all">
-                    Наши услуги
-                </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card class="border-l-4 border-l-cyan-500 hover:scale-105 transition-all duration-300 bg-white/90 backdrop-blur-md border border-white/30">
+                <CardHeader>
+                    <div class="w-12 h-12 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-lg flex items-center justify-center mb-4">
+                        <Icon Name="zap" Size="h-6 w-6 text-cyan-600" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Молниеносная скорость</h3>
+                    <p class="text-gray-600">
+                        Оптимизированная производительность для лучшего пользовательского опыта
+                    </p>
+                </CardHeader>
+            </Card>
+
+            <Card class="border-l-4 border-l-purple-500 hover:scale-105 transition-all duration-300 bg-white/90 backdrop-blur-md border border-white/30">
+                <CardHeader>
+                    <div class="w-12 h-12 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg flex items-center justify-center mb-4">
+                        <Icon Name="shield" Size="h-6 w-6 text-purple-600" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Безопасность</h3>
+                    <p class="text-gray-600">
+                        Высокий уровень защиты данных и соответствие стандартам безопасности
+                    </p>
+                </CardHeader>
+            </Card>
+
+            <Card class="border-l-4 border-l-emerald-500 hover:scale-105 transition-all duration-300 bg-white/90 backdrop-blur-md border border-white/30">
+                <CardHeader>
+                    <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center mb-4">
+                        <Icon Name="users" Size="h-6 w-6 text-emerald-600" />
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-900">Команда экспертов</h3>
+                    <p class="text-gray-600">
+                        Опытные специалисты с многолетним стажем в сфере IT
+                    </p>
+                </CardHeader>
+            </Card>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-20 bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 relative overflow-hidden">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="group">
+                <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">500+</div>
+                <div class="text-cyan-100">Проектов завершено</div>
+            </div>
+            <div class="group">
+                <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">98%</div>
+                <div class="text-cyan-100">Довольных клиентов</div>
+            </div>
+            <div class="group">
+                <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">5+</div>
+                <div class="text-cyan-100">Лет опыта</div>
+            </div>
+            <div class="group">
+                <div class="text-4xl font-bold text-white mb-2 group-hover:scale-110 transition-transform duration-300">24/7</div>
+                <div class="text-cyan-100">Поддержка</div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- About Section -->
-<section class="bg-gray-50 py-20">
+<section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-cyan-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                    О нашей студии
+                </h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Мы — команда творческих профессионалов, которая превращает идеи в 
+                    реальность. Наша цель — создавать цифровые продукты, которые не только 
+                    красиво выглядят, но и эффективно решают бизнес-задачи.
+                </p>
+                <div class="flex items-center gap-4 mb-6">
+                    <div class="flex">
+                        @for (int i = 1; i <= 5; i++)
+                        {
+                            <Icon Name="star" Size="h-5 w-5 text-yellow-400" Fill="currentColor" />
+                        }
+                    </div>
+                    <span class="text-gray-600">4.9/5 рейтинг клиентов</span>
+                </div>
+                <Button Variant="Button.ButtonVariant.Primary">
+                    Узнать больше
+                </Button>
+            </div>
+            <div class="bg-white/90 backdrop-blur-md p-8 rounded-2xl shadow-xl border border-white/30">
+                <div class="space-y-6">
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-cyan-600 font-bold">1</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Анализ и планирование</h3>
+                            <p class="text-gray-600">Изучаем ваши потребности и цели</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-purple-600 font-bold">2</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Дизайн и разработка</h3>
+                            <p class="text-gray-600">Создаем красивые и функциональные решения</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <span class="text-emerald-600 font-bold">3</span>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Запуск и поддержка</h3>
+                            <p class="text-gray-600">Обеспечиваем успешный запуск и дальнейшую поддержку</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="py-20 bg-white/80 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">О компании</h2>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                Мы — ведущая компания в области маркетинговых исследований с более чем 10-летним опытом работы на российском рынке.
+            <h2 class="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                Свяжитесь с нами
+            </h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Готовы обсудить ваш проект? Мы всегда рады новым вызовам и интересным задачам.
             </p>
         </div>
         
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div>
-                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Наша миссия</h3>
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Предоставлять точные и своевременные маркетинговые данные, которые помогают нашим клиентам принимать обоснованные бизнес-решения и достигать устойчивого роста.
-                </p>
-                <p class="text-gray-600 mb-6 leading-relaxed">
-                    Мы верим, что каждое успешное бизнес-решение должно основываться на глубоком понимании рынка и потребителей. Наша команда профессионалов использует современные методы сбора и анализа данных для получения объективной картины рынка.
+                <div class="space-y-8">
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Icon Name="mail" Size="h-6 w-6 text-cyan-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Email</h3>
+                            <p class="text-gray-600">hello@skopeostudio.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-green-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Icon Name="phone" Size="h-6 w-6 text-emerald-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Телефон</h3>
+                            <p class="text-gray-600">+7 (999) 123-45-67</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                            <Icon Name="map-pin" Size="h-6 w-6 text-purple-600" />
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-900">Адрес</h3>
+                            <p class="text-gray-600">Москва, ул. Примерная, 123</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <Card class="bg-white/90 backdrop-blur-md border border-white/30">
+                <CardHeader>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Отправить сообщение</h3>
+                    <p class="text-gray-600">
+                        Заполните форму, и мы свяжемся с вами в ближайшее время
+                    </p>
+                </CardHeader>
+                <CardContent class="space-y-4">
+                    <div class="grid grid-cols-2 gap-4">
+                        <Input Placeholder="Ваше имя" />
+                        <Input Placeholder="Email" Type="email" />
+                    </div>
+                    <Input Placeholder="Тема сообщения" />
+                    <Textarea Placeholder="Расскажите о вашем проекте..." Rows="4" />
+                    <Button Variant="Button.ButtonVariant.Primary" class="w-full">
+                        Отправить сообщение
+                    </Button>
+                </CardContent>
+            </Card>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white py-12 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div class="col-span-1 md:col-span-2">
+                <h3 class="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent mb-4">
+                    Skopeo Studio
+                </h3>
+                <p class="text-gray-400 mb-4">
+                    Создаем цифровые решения, которые вдохновляют и превосходят ожидания.
                 </p>
             </div>
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h4 class="text-xl font-semibold text-gray-900 mb-4">Наши ценности</h4>
-                <ul class="space-y-3">
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-gray-600">Точность и объективность данных</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-gray-600">Индивидуальный подход к каждому клиенту</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-gray-600">Конфиденциальность и этичность</span>
-                    </li>
-                    <li class="flex items-start">
-                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="text-gray-600">Постоянное развитие и инновации</span>
-                    </li>
+            <div>
+                <h4 class="font-semibold mb-4">Услуги</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Веб-дизайн</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Мобильные приложения</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Брендинг</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">UX/UI дизайн</li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-semibold mb-4">Компания</h4>
+                <ul class="space-y-2 text-gray-400">
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">О нас</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Портфолио</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Блог</li>
+                    <li class="hover:text-cyan-400 transition-colors cursor-pointer">Контакты</li>
                 </ul>
             </div>
         </div>
-    </div>
-</section>
-
-<!-- Stats Section -->
-<section class="bg-blue-800 py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
-                Наши достижения
-            </h2>
-            <p class="text-xl text-blue-100 max-w-2xl mx-auto">
-                Цифры, которые говорят о качестве наших услуг
-            </p>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-white mb-3">300+</div>
-                <div class="text-blue-100 text-lg">Проведенных исследований</div>
-            </div>
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-white mb-3">95%</div>
-                <div class="text-blue-100 text-lg">Довольных клиентов</div>
-            </div>
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-white mb-3">10+</div>
-                <div class="text-blue-100 text-lg">Лет опыта</div>
-            </div>
-            <div class="text-center">
-                <div class="text-4xl md:text-5xl font-bold text-white mb-3">50+</div>
-                <div class="text-blue-100 text-lg">Экспертов в команде</div>
-            </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Skopeo Studio. Все права защищены.</p>
         </div>
     </div>
-</section>
+</footer>

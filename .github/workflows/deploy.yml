@@ -1,0 +1,47 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install npm dependencies
+      run: npm install
+
+    - name: Build Tailwind CSS
+      run: npx tailwindcss -i ./wwwroot/css/app.css -o ./wwwroot/css/tailwind.css --minify
+
+    - name: Publish .NET Core Project
+      run: dotnet publish SkopeoWebsite.csproj -c Release -o release --nologo
+
+    - name: Change base-tag in index.html from / to SkopeoWebsite
+      run: sed -i 's/<base href="\/" \/>/<base href="\/SkopeoWebsite\/" \/>/g' release/wwwroot/index.html
+
+    - name: copy index.html to 404.html to serve the same file when a file is not found
+      run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+    - name: Add .nojekyll file
+      run: touch release/wwwroot/.nojekyll
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: release/wwwroot

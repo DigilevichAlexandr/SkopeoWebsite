@@ -1,0 +1,168 @@
+@page "/market-research"
+@using SkopeoWebsite.Components.UI
+
+<PageTitle>Маркетинговые Исследования - Skopeo Studio</PageTitle>
+
+<div class="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-emerald-600 via-teal-600 to-cyan-600 text-white py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-white to-emerald-100 bg-clip-text text-transparent">
+                Маркетинговые Исследования
+            </h1>
+            <p class="text-xl mb-8 text-emerald-100">
+                Получите глубокие инсайты и принимайте обоснованные решения с помощью наших комплексных исследовательских услуг
+            </p>
+            <Button Variant="Button.ButtonVariant.Secondary">
+                Начать
+            </Button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Наши Услуги
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <Card class="bg-white/80 backdrop-blur-md border border-white/30 hover:scale-105 transition-all duration-300">
+                    <CardHeader>
+                        <div class="w-12 h-12 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <Icon Name="users" Size="h-6 w-6 text-emerald-600" />
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Потребительские Инсайты</h3>
+                    </CardHeader>
+                    <CardContent>
+                        <p class="text-gray-600">Понимайте поведение и предпочтения потребителей с помощью наших детальных исследований.</p>
+                    </CardContent>
+                </Card>
+                
+                <Card class="bg-white/80 backdrop-blur-md border border-white/30 hover:scale-105 transition-all duration-300">
+                    <CardHeader>
+                        <div class="w-12 h-12 bg-gradient-to-r from-blue-100 to-indigo-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <Icon Name="chart" Size="h-6 w-6 text-blue-600" />
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Конкурентный Анализ</h3>
+                    </CardHeader>
+                    <CardContent>
+                        <p class="text-gray-600">Опережайте конкурентов с помощью нашего углубленного анализа рынка.</p>
+                    </CardContent>
+                </Card>
+                
+                <Card class="bg-white/80 backdrop-blur-md border border-white/30 hover:scale-105 transition-all duration-300">
+                    <CardHeader>
+                        <div class="w-12 h-12 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <Icon Name="badge" Size="h-6 w-6 text-purple-600" />
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Исследование Бренда</h3>
+                    </CardHeader>
+                    <CardContent>
+                        <p class="text-gray-600">Улучшайте стратегию бренда с помощью наших комплексных исследований.</p>
+                    </CardContent>
+                </Card>
+                
+                <Card class="bg-white/80 backdrop-blur-md border border-white/30 hover:scale-105 transition-all duration-300">
+                    <CardHeader>
+                        <div class="w-12 h-12 bg-gradient-to-r from-amber-100 to-orange-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+                            <Icon Name="test-tube" Size="h-6 w-6 text-amber-600" />
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-900 mb-4">Тестирование Продукта</h3>
+                    </CardHeader>
+                    <CardContent>
+                        <p class="text-gray-600">Обеспечьте успех продукта с помощью тщательного тестирования и обратной связи.</p>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="py-20 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Кейсы
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="group">
+                    <Badge Variant="Badge.BadgeVariant.Success" class="mb-4 px-6 py-3 text-lg font-semibold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        Кейс 1
+                    </Badge>
+                    <h3 class="text-xl font-semibold mb-2">Проект А</h3>
+                    <p class="text-gray-600">Узнайте, как мы помогли ведущему бренду достичь успеха.</p>
+                </div>
+                <div class="group">
+                    <Badge Variant="Badge.BadgeVariant.Success" class="mb-4 px-6 py-3 text-lg font-semibold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        Кейс 2
+                    </Badge>
+                    <h3 class="text-xl font-semibold mb-2">Проект Б</h3>
+                    <p class="text-gray-600">Изучите наш инновационный подход к маркетинговым исследованиям.</p>
+                </div>
+                <div class="group">
+                    <Badge Variant="Badge.BadgeVariant.Success" class="mb-4 px-6 py-3 text-lg font-semibold shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        Кейс 3
+                    </Badge>
+                    <h3 class="text-xl font-semibold mb-2">Проект В</h3>
+                    <p class="text-gray-600">Посмотрите, как мы предоставили практические инсайты для наших клиентов.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Отзывы Клиентов
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <Card class="bg-white/90 backdrop-blur-md p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300 border border-white/30">
+                    <CardContent>
+                        <div class="flex items-center mb-4">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <Icon Name="star" Size="h-5 w-5 text-yellow-400" Fill="currentColor" />
+                            }
+                        </div>
+                        <p class="mb-4 text-gray-600">"Их исследовательские услуги предоставили нам бесценные инсайты!"</p>
+                        <p class="font-semibold text-gray-900">— Джон Доу</p>
+                    </CardContent>
+                </Card>
+                
+                <Card class="bg-white/90 backdrop-blur-md p-6 rounded-lg shadow-xl hover:scale-105 transition-all duration-300 border border-white/30">
+                    <CardContent>
+                        <div class="flex items-center mb-4">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                <Icon Name="star" Size="h-5 w-5 text-yellow-400" Fill="currentColor" />
+                            }
+                        </div>
+                        <p class="mb-4 text-gray-600">"Профессионально и тщательно, настоятельно рекомендую!"</p>
+                        <p class="font-semibold text-gray-900">— Джейн Смит</p>
+                    </CardContent>
+                </Card>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="py-20 bg-white/60 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-bold mb-8 bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                Связаться с Нами
+            </h2>
+            <p class="mb-8 text-gray-600">Готовы начать ваш проект? Свяжитесь с нами!</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <Button Variant="Button.ButtonVariant.Success">
+                    <Icon Name="mail" Size="h-4 w-4 mr-2" />
+                    contact@marketresearch.com
+                </Button>
+                <Button Variant="Button.ButtonVariant.Secondary">
+                    <Icon Name="phone" Size="h-4 w-4 mr-2" />
+                    +7 (555) 123-4567
+                </Button>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,250 @@
+@page "/suits"
+@using SkopeoWebsite.Components.UI
+
+<PageTitle>Костюмы - Skopeo Studio</PageTitle>
+
+<div class="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50 to-cyan-50">
+    <!-- Header -->
+    <div class="bg-white/80 backdrop-blur-md shadow-xl border-b border-white/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center">
+                <Badge Variant="Badge.BadgeVariant.Secondary" class="mb-4 bg-gradient-to-r from-cyan-100 to-blue-100 text-cyan-800 shadow-md">
+                    ✨ Премиум коллекция
+                </Badge>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    Элегантные
+                    <span class="bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+                        костюмы
+                    </span>
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Откройте для себя коллекцию безупречно скроенных костюмов, 
+                    созданных для современного джентльмена
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-wrap gap-4 justify-center mb-8">
+            <Button Variant="Button.ButtonVariant.Primary">
+                Все костюмы
+            </Button>
+            <Button Variant="Button.ButtonVariant.Outline">Деловые</Button>
+            <Button Variant="Button.ButtonVariant.Outline">Смокинги</Button>
+            <Button Variant="Button.ButtonVariant.Outline">Повседневные</Button>
+            <Button Variant="Button.ButtonVariant.Outline">Свадебные</Button>
+        </div>
+    </div>
+
+    <!-- Suits Grid -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            @foreach (var suit in suits)
+            {
+                <Card class="group hover:shadow-2xl hover:scale-105 transition-all duration-500 overflow-hidden bg-white/90 backdrop-blur-md border border-white/30">
+                    <div class="relative">
+                        <img src="@suit.Image" 
+                             alt="@suit.Name"
+                             class="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500" />
+                        <div class="absolute top-4 left-4">
+                            <Badge Variant="Badge.BadgeVariant.Danger" class="bg-gradient-to-r from-red-500 to-pink-600 text-white shadow-lg">
+                                -@suit.Discount
+                            </Badge>
+                        </div>
+                        <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                            <div class="flex flex-col gap-2">
+                                <Button Size="Button.ButtonSize.Small" Variant="Button.ButtonVariant.Secondary" class="w-10 h-10 p-0">
+                                    <Icon Name="heart" Size="h-4 w-4" />
+                                </Button>
+                                <Button Size="Button.ButtonSize.Small" Variant="Button.ButtonVariant.Secondary" class="w-10 h-10 p-0">
+                                    <Icon Name="eye" Size="h-4 w-4" />
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <CardHeader class="pb-3">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900 group-hover:text-cyan-600 transition-colors">
+                                @suit.Name
+                            </h3>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center">
+                                @for (int i = 1; i <= 5; i++)
+                                {
+                                    <Icon Name="star" Size="h-4 w-4" class="@(i <= suit.Rating ? "text-yellow-400" : "text-gray-300")" Fill="@(i <= suit.Rating ? "currentColor" : "none")" />
+                                }
+                            </div>
+                            <span class="text-sm text-gray-600">
+                                @suit.Rating.ToString("F1") (@suit.Reviews отзывов)
+                            </span>
+                        </div>
+                    </CardHeader>
+
+                    <CardContent class="pt-0">
+                        <div class="space-y-4">
+                            <!-- Price -->
+                            <div class="flex items-center gap-2">
+                                <span class="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">@suit.Price</span>
+                                <span class="text-lg text-gray-500 line-through">@suit.OriginalPrice</span>
+                            </div>
+
+                            <!-- Colors -->
+                            <div>
+                                <p class="text-sm text-gray-600 mb-2">Цвета:</p>
+                                <div class="flex gap-2">
+                                    @foreach (var color in suit.Colors)
+                                    {
+                                        <Badge Variant="Badge.BadgeVariant.Outline" class="text-xs backdrop-blur-md">
+                                            @color
+                                        </Badge>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Sizes -->
+                            <div>
+                                <p class="text-sm text-gray-600 mb-2">Размеры:</p>
+                                <div class="flex gap-2">
+                                    @foreach (var size in suit.Sizes)
+                                    {
+                                        <Badge Variant="Badge.BadgeVariant.Secondary" class="text-xs">
+                                            @size
+                                        </Badge>
+                                    }
+                                </div>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="flex gap-2 pt-2">
+                                <Button Variant="Button.ButtonVariant.Primary" class="flex-1">
+                                    <Icon Name="shopping-cart" Size="h-4 w-4 mr-2" />
+                                    В корзину
+                                </Button>
+                                <Button Variant="Button.ButtonVariant.Outline" Size="Button.ButtonSize.Medium" class="px-3">
+                                    <Icon Name="heart" Size="h-4 w-4" />
+                                </Button>
+                            </div>
+                        </div>
+                    </CardContent>
+                </Card>
+            }
+        </div>
+    </div>
+
+    <!-- Features -->
+    <div class="bg-white/80 backdrop-blur-md py-16 border-t border-white/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-cyan-100 to-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <svg class="w-8 h-8 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Качество Premium</h3>
+                    <p class="text-gray-600">Только лучшие материалы и безупречный пошив</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-emerald-100 to-green-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h1.586a1 1 0 01.707.293l1.414 1.414a1 1 0 00.707.293H15a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Индивидуальный пошив</h3>
+                    <p class="text-gray-600">Подгонка по фигуре для идеальной посадки</p>
+                </div>
+                <div class="text-center group">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-100 to-pink-100 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                        <svg class="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Быстрая доставка</h3>
+                    <p class="text-gray-600">Доставка по всей России в течение 2-3 дней</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 py-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-black/10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h2 class="text-3xl font-bold text-white mb-4">
+                Будьте в курсе новых коллекций
+            </h2>
+            <p class="text-xl text-cyan-100 mb-8">
+                Подпишитесь на рассылку и получайте эксклюзивные предложения
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                <Input Type="email" Placeholder="Ваш email" class="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-cyan-300 outline-none backdrop-blur-md bg-white/20 text-white placeholder-cyan-100" />
+                <Button Variant="Button.ButtonVariant.Secondary" class="px-8">
+                    Подписаться
+                </Button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private List<SuitModel> suits = new()
+    {
+        new SuitModel
+        {
+            Id = 1,
+            Name = "Классический деловой костюм",
+            Price = "45,000₽",
+            OriginalPrice = "55,000₽",
+            Image = "https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?w=400&h=600&fit=crop",
+            Rating = 4.9m,
+            Reviews = 127,
+            Colors = new[] { "Темно-синий", "Черный", "Серый" },
+            Sizes = new[] { "S", "M", "L", "XL" },
+            Discount = "18%"
+        },
+        new SuitModel
+        {
+            Id = 2,
+            Name = "Премиум смокинг",
+            Price = "75,000₽",
+            OriginalPrice = "85,000₽",
+            Image = "https://images.unsplash.com/photo-1593030761757-71fae45fa0e7?w=400&h=600&fit=crop",
+            Rating = 5.0m,
+            Reviews = 89,
+            Colors = new[] { "Черный", "Темно-синий" },
+            Sizes = new[] { "S", "M", "L", "XL", "XXL" },
+            Discount = "12%"
+        },
+        new SuitModel
+        {
+            Id = 3,
+            Name = "Повседневный пиджак",
+            Price = "25,000₽",
+            OriginalPrice = "30,000₽",
+            Image = "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+            Rating = 4.7m,
+            Reviews = 203,
+            Colors = new[] { "Бежевый", "Синий", "Серый" },
+            Sizes = new[] { "S", "M", "L", "XL" },
+            Discount = "17%"
+        }
+    };
+
+    public class SuitModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = "";
+        public string Price { get; set; } = "";
+        public string OriginalPrice { get; set; } = "";
+        public string Image { get; set; } = "";
+        public decimal Rating { get; set; }
+        public int Reviews { get; set; }
+        public string[] Colors { get; set; } = Array.Empty<string>();
+        public string[] Sizes { get; set; } = Array.Empty<string>();
+        public string Discount { get; set; } = "";
+    }
+}
