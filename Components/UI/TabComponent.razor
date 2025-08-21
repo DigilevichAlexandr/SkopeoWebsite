@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Components
+
+<div class="w-full">
+    <!-- Основные вкладки -->
+    <div class="tab-list mb-12">
+        @foreach (var tab in Tabs)
+        {
+            <button 
+                @onclick="() => SetActiveTab(tab.Key)"
+                class="tab-button @(ActiveTab == tab.Key ? "active" : "")">
+                @tab.Value.Title
+            </button>
+        }
+    </div>
+
+    <!-- Содержимое вкладок -->
+    <div class="min-h-[400px] animate-fade-in">
+        @if (Tabs.ContainsKey(ActiveTab))
+        {
+            @Tabs[ActiveTab].Content
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Dictionary<string, TabItem> Tabs { get; set; } = new();
+    [Parameter] public string ActiveTab { get; set; } = "";
+    [Parameter] public EventCallback<string> OnTabChanged { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (string.IsNullOrEmpty(ActiveTab) && Tabs.Any())
+        {
+            ActiveTab = Tabs.Keys.First();
+        }
+    }
+
+    private async Task SetActiveTab(string tabKey)
+    {
+        ActiveTab = tabKey;
+        await OnTabChanged.InvokeAsync(ActiveTab);
+    }
+
+
+
+    public class TabItem
+    {
+        public string Title { get; set; } = "";
+        public RenderFragment Content { get; set; } = builder => { };
+    }
+}

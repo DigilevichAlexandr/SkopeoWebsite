@@ -1,0 +1,51 @@
+@using Microsoft.AspNetCore.Components
+
+<div class="w-full">
+    <!-- Подвкладки -->
+    <div class="tab-list mb-8" style="border-bottom-color: var(--color-border);">
+        @foreach (var tab in SubTabs)
+        {
+            <button 
+                @onclick="() => SetActiveSubTab(tab.Key)"
+                class="sub-tab-button @(ActiveSubTab == tab.Key ? "active" : "")">
+                @tab.Value.Title
+            </button>
+        }
+    </div>
+
+    <!-- Содержимое подвкладок -->
+    <div class="animate-slide-up">
+        @if (SubTabs.ContainsKey(ActiveSubTab))
+        {
+            @SubTabs[ActiveSubTab].Content
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter] public Dictionary<string, SubTabItem> SubTabs { get; set; } = new();
+    [Parameter] public string ActiveSubTab { get; set; } = "";
+    [Parameter] public EventCallback<string> OnSubTabChanged { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (string.IsNullOrEmpty(ActiveSubTab) && SubTabs.Any())
+        {
+            ActiveSubTab = SubTabs.Keys.First();
+        }
+    }
+
+    private async Task SetActiveSubTab(string tabKey)
+    {
+        ActiveSubTab = tabKey;
+        await OnSubTabChanged.InvokeAsync(ActiveSubTab);
+    }
+
+
+
+    public class SubTabItem
+    {
+        public string Title { get; set; } = "";
+        public RenderFragment Content { get; set; } = builder => { };
+    }
+}

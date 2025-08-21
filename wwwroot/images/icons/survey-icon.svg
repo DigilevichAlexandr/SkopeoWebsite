@@ -1,0 +1,37 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="surveyGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#06B6D4;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <circle cx="32" cy="32" r="30" fill="url(#surveyGradient)" opacity="0.1"/>
+  
+  <!-- Clipboard/form -->
+  <rect x="18" y="12" width="28" height="36" rx="4" fill="white" stroke="url(#surveyGradient)" stroke-width="2"/>
+  <rect x="18" y="8" width="28" height="8" rx="4" fill="url(#surveyGradient)"/>
+  
+  <!-- Form fields -->
+  <rect x="22" y="20" width="20" height="3" rx="1.5" fill="#E5E7EB"/>
+  <rect x="22" y="26" width="16" height="3" rx="1.5" fill="#E5E7EB"/>
+  <rect x="22" y="32" width="18" height="3" rx="1.5" fill="#E5E7EB"/>
+  <rect x="22" y="38" width="14" height="3" rx="1.5" fill="#E5E7EB"/>
+  
+  <!-- Checkboxes -->
+  <rect x="22" y="20" width="3" height="3" rx="0.5" fill="url(#surveyGradient)"/>
+  <rect x="22" y="26" width="3" height="3" rx="0.5" fill="url(#surveyGradient)"/>
+  <rect x="22" y="32" width="3" height="3" rx="0.5" fill="#E5E7EB"/>
+  <rect x="22" y="38" width="3" height="3" rx="0.5" fill="url(#surveyGradient)"/>
+  
+  <!-- Checkmarks -->
+  <path d="M23 21.5L23.5 22L25 20.5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 27.5L23.5 28L25 26.5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 39.5L23.5 40L25 38.5" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Pen/pencil -->
+  <circle cx="48" cy="16" r="8" fill="#F59E0B"/>
+  <path d="M45 13L48 16L51 13" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

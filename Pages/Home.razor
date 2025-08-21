@@ -1,235 +1,120 @@
 ﻿@page "/"
 @using SkopeoWebsite.Components.UI
 
-<PageTitle>Skopeo - Дизайн Студия</PageTitle>
+<PageTitle>Marketing Insights - Маркетинговые исследования</PageTitle>
 
 <!-- Hero Section -->
-<section id="home" class="relative min-h-screen flex items-center overflow-hidden">
-    <!-- Animated Background -->
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900"></div>
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%239CA3AF" fill-opacity="0.05" fill-rule="evenodd"%3E%3Cpath d="M20 20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8zm0-20c0 4.4-3.6 8-8 8s-8-3.6-8-8 3.6-8 8-8 8 3.6 8 8z"/%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
-    
-    <!-- Floating Elements -->
-    <div class="absolute top-20 left-10 w-32 h-32 bg-blue-500/10 rounded-full blur-xl animate-pulse"></div>
-    <div class="absolute bottom-20 right-10 w-48 h-48 bg-purple-500/10 rounded-full blur-xl animate-pulse delay-1000"></div>
-    <div class="absolute top-1/2 left-1/4 w-24 h-24 bg-cyan-500/10 rounded-full blur-xl animate-pulse delay-500"></div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <Badge Variant="Badge.BadgeVariant.Secondary" class="mb-8 bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 transition-all duration-300">
-            ✨ Новая эра дизайна
-        </Badge>
-        
-        <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-            <span class="text-white">Создаем</span>
+<section class="relative bg-white py-20 lg:py-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8">
+                <span class="text-blue-800">Marketing</span>
             <br />
-            <span class="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent animate-gradient-x">
-                удивительные
-            </span>
-            <br />
-            <span class="text-white">решения</span>
+                <span class="text-gray-900">Insights</span>
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed">
-            Мы специализируемся на создании современных веб-сайтов, мобильных приложений 
-            и брендинга, которые помогают вашему бизнесу выделиться среди конкурентов.
-        </p>
-        
-        <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-            <Button Size="Button.ButtonSize.Large" Variant="Button.ButtonVariant.Primary" class="group relative overflow-hidden bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 border-0 px-8 py-4 text-lg font-semibold">
-                <span class="relative z-10">Начать проект</span>
-                <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
-            </Button>
-            <Button Variant="Button.ButtonVariant.Outline" Size="Button.ButtonSize.Large" class="border-2 border-white/30 text-white hover:bg-white/10 backdrop-blur-md px-8 py-4 text-lg font-semibold">
-                Посмотреть портфолио
-            </Button>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-                <div class="w-1 h-3 bg-white/50 rounded-full mt-2 animate-pulse"></div>
+            <p class="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+                Мы предоставляем профессиональные маркетинговые исследования, которые помогают вашему бизнесу принимать обоснованные решения на основе данных и понимания рынка.
+            </p>
+            
+            <p class="text-lg text-gray-600 mb-12 max-w-3xl mx-auto">
+                Наша команда экспертов использует передовые методики анализа для изучения потребительского поведения, конкурентной среды и рыночных тенденций. Мы превращаем сложные данные в понятные выводы и практические рекомендации.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <a href="/contacts" class="bg-blue-800 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    Связаться с нами
+                </a>
+                <a href="/services" class="border-2 border-blue-800 text-blue-800 hover:bg-blue-800 hover:text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all">
+                    Наши услуги
+                </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Features Section -->
-<section id="features" class="relative py-32 bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute top-0 left-0 w-full h-full opacity-30">
-        <div class="absolute top-20 left-10 w-40 h-40 bg-gradient-to-r from-blue-400 to-purple-600 rounded-full blur-3xl opacity-20 animate-pulse"></div>
-        <div class="absolute bottom-20 right-10 w-60 h-60 bg-gradient-to-r from-purple-400 to-pink-600 rounded-full blur-3xl opacity-20 animate-pulse delay-1000"></div>
-    </div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-20">
-            <Badge Variant="Badge.BadgeVariant.Secondary" class="mb-6 bg-white/20 backdrop-blur-md border border-white/30">
-                ⚡ Наши преимущества
-            </Badge>
-            <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-slate-800 to-slate-600 bg-clip-text text-transparent mb-6">
-                Почему выбирают нас
-            </h2>
-            <p class="text-xl md:text-2xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-                Наша команда экспертов использует передовые технологии для создания 
-                исключительных цифровых продуктов.
+<!-- About Section -->
+<section class="bg-gray-50 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">О компании</h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Мы — ведущая компания в области маркетинговых исследований с более чем 10-летним опытом работы на российском рынке.
             </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
-                <Card class="relative bg-white/70 backdrop-blur-xl border border-white/20 hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
-                    <CardHeader class="p-8">
-                        <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <Icon Name="zap" Size="h-8 w-8 text-white" />
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4 group-hover:text-blue-600 transition-colors">Молниеносная скорость</h3>
-                        <p class="text-slate-600 text-lg leading-relaxed">
-                            Оптимизированная производительность для лучшего пользовательского опыта
-                        </p>
-                    </CardHeader>
-                </Card>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h3 class="text-2xl font-semibold text-gray-900 mb-6">Наша миссия</h3>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Предоставлять точные и своевременные маркетинговые данные, которые помогают нашим клиентам принимать обоснованные бизнес-решения и достигать устойчивого роста.
+                </p>
+                <p class="text-gray-600 mb-6 leading-relaxed">
+                    Мы верим, что каждое успешное бизнес-решение должно основываться на глубоком понимании рынка и потребителей. Наша команда профессионалов использует современные методы сбора и анализа данных для получения объективной картины рынка.
+                </p>
             </div>
-
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
-                <Card class="relative bg-white/70 backdrop-blur-xl border border-white/20 hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
-                    <CardHeader class="p-8">
-                        <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <Icon Name="shield" Size="h-8 w-8 text-white" />
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4 group-hover:text-purple-600 transition-colors">Безопасность</h3>
-                        <p class="text-slate-600 text-lg leading-relaxed">
-                            Высокий уровень защиты данных и соответствие стандартам безопасности
-                        </p>
-                    </CardHeader>
-                </Card>
-            </div>
-
-            <div class="group relative">
-                <div class="absolute -inset-0.5 bg-gradient-to-r from-green-600 to-blue-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-300"></div>
-                <Card class="relative bg-white/70 backdrop-blur-xl border border-white/20 hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl">
-                    <CardHeader class="p-8">
-                        <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                            <Icon Name="users" Size="h-8 w-8 text-white" />
-                        </div>
-                        <h3 class="text-2xl font-bold text-slate-800 mb-4 group-hover:text-green-600 transition-colors">Команда экспертов</h3>
-                        <p class="text-slate-600 text-lg leading-relaxed">
-                            Опытные специалисты с многолетним стажем в сфере IT
-                        </p>
-                    </CardHeader>
-                </Card>
+            <div class="bg-white p-8 rounded-lg shadow-lg">
+                <h4 class="text-xl font-semibold text-gray-900 mb-4">Наши ценности</h4>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-gray-600">Точность и объективность данных</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-gray-600">Индивидуальный подход к каждому клиенту</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-gray-600">Конфиденциальность и этичность</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-600 mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="text-gray-600">Постоянное развитие и инновации</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Stats Section -->
-<section class="relative py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="4"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
-    <div class="absolute top-10 left-10 w-32 h-32 bg-cyan-500/20 rounded-full blur-3xl animate-pulse"></div>
-    <div class="absolute bottom-10 right-10 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <div class="mb-16">
-            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">
-                Цифры говорят сами за себя
+<section class="bg-blue-800 py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+                Наши достижения
             </h2>
             <p class="text-xl text-blue-100 max-w-2xl mx-auto">
-                Результаты нашей работы измеряются успехом наших клиентов
+                Цифры, которые говорят о качестве наших услуг
             </p>
         </div>
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="group">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                    <div class="text-5xl md:text-6xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">500+</div>
-                    <div class="text-blue-100 text-lg font-medium">Проектов завершено</div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-3">300+</div>
+                <div class="text-blue-100 text-lg">Проведенных исследований</div>
             </div>
-            <div class="group">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                    <div class="text-5xl md:text-6xl font-bold text-white mb-3 group-hover:text-purple-400 transition-colors">98%</div>
-                    <div class="text-blue-100 text-lg font-medium">Довольных клиентов</div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-3">95%</div>
+                <div class="text-blue-100 text-lg">Довольных клиентов</div>
             </div>
-            <div class="group">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                    <div class="text-5xl md:text-6xl font-bold text-white mb-3 group-hover:text-green-400 transition-colors">5+</div>
-                    <div class="text-blue-100 text-lg font-medium">Лет опыта</div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-3">10+</div>
+                <div class="text-blue-100 text-lg">Лет опыта</div>
             </div>
-            <div class="group">
-                <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 hover:bg-white/15 transition-all duration-300 hover:scale-105">
-                    <div class="text-5xl md:text-6xl font-bold text-white mb-3 group-hover:text-pink-400 transition-colors">24/7</div>
-                    <div class="text-blue-100 text-lg font-medium">Поддержка</div>
-                </div>
+            <div class="text-center">
+                <div class="text-4xl md:text-5xl font-bold text-white mb-3">50+</div>
+                <div class="text-blue-100 text-lg">Экспертов в команде</div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Footer -->
-<footer class="relative bg-slate-900 text-white py-20 overflow-hidden">
-    <!-- Background Elements -->
-    <div class="absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/50 to-purple-900/50"></div>
-    <div class="absolute top-0 left-0 w-full h-full opacity-30">
-        <div class="absolute top-20 left-20 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-        <div class="absolute bottom-20 right-20 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-    </div>
-
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <h3 class="text-4xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent mb-6">
-                    Skopeo Studio
-                </h3>
-                <p class="text-gray-300 text-lg mb-8 leading-relaxed max-w-md">
-                    Создаем цифровые решения, которые вдохновляют и превосходят ожидания. 
-                    Ваш успех - наша миссия.
-                </p>
-                <div class="flex space-x-4">
-                    <div class="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300 cursor-pointer group">
-                        <svg class="w-6 h-6 text-white group-hover:text-cyan-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
-                        </svg>
-                    </div>
-                    <div class="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300 cursor-pointer group">
-                        <svg class="w-6 h-6 text-white group-hover:text-purple-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.719-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.749.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378 0 0-.599 2.282-.744 2.84-.282 1.084-1.064 2.456-1.549 3.235C9.584 23.815 10.77 24.001 12.017 24.001c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
-                        </svg>
-                    </div>
-                    <div class="w-12 h-12 bg-white/10 backdrop-blur-md border border-white/20 rounded-xl flex items-center justify-center hover:bg-white/20 transition-all duration-300 cursor-pointer group">
-                        <svg class="w-6 h-6 text-white group-hover:text-pink-400 transition-colors" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12.004 5.838c-3.403 0-6.158 2.758-6.158 6.158 0 3.403 2.758 6.158 6.158 6.158 3.403 0 6.158-2.758 6.158-6.158 0-3.403-2.758-6.158-6.158-6.158zm0 10.155c-2.209 0-3.997-1.789-3.997-3.997s1.789-3.997 3.997-3.997 3.997 1.789 3.997 3.997c0 2.209-1.789 3.997-3.997 3.997z"/>
-                            <circle cx="18.406" cy="5.594" r="1.44"/>
-                            <path d="M12.004 0C8.852 0 8.435.015 7.052.072 5.672.129 4.724.333 3.925.63c-.821.319-1.517.745-2.211 1.438C1.021 2.761.596 3.457.276 4.278.979 5.077.774 6.025.718 7.405c-.057 1.381-.072 1.799-.072 4.95s.015 3.569.072 4.95c.057 1.38.261 2.328.558 3.127.319.821.745 1.517 1.438 2.211.693.693 1.39 1.119 2.211 1.438.799.297 1.747.501 3.127.558 1.381.057 1.799.072 4.95.072s3.569-.015 4.95-.072c1.38-.057 2.328-.261 3.127-.558.821-.319 1.517-.745 2.211-1.438.693-.693 1.119-1.39 1.438-2.211.297-.799.501-1.747.558-3.127.057-1.381.072-1.799.072-4.95s-.015-3.569-.072-4.95c-.057-1.38-.261-2.328-.558-3.127-.319-.821-.745-1.517-1.438-2.211C20.518 1.021 19.822.596 19.001.276 18.202-.021 17.254-.225 15.874-.282 14.493-.339 14.075-.354 10.924-.354L12.004 0z"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <h4 class="font-bold text-xl mb-6 text-white">Услуги</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors text-lg">Веб-дизайн</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors text-lg">Мобильные приложения</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors text-lg">Брендинг</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-cyan-400 transition-colors text-lg">UX/UI дизайн</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="font-bold text-xl mb-6 text-white">Компания</h4>
-                <ul class="space-y-3">
-                    <li><a href="#" class="text-gray-300 hover:text-purple-400 transition-colors text-lg">О нас</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-purple-400 transition-colors text-lg">Портфолио</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-purple-400 transition-colors text-lg">Блог</a></li>
-                    <li><a href="#" class="text-gray-300 hover:text-purple-400 transition-colors text-lg">Контакты</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="border-t border-white/10 mt-16 pt-8 text-center">
-            <p class="text-gray-400 text-lg">&copy; 2024 Skopeo Studio. Все права защищены.</p>
-        </div>
-    </div>
-</footer>
