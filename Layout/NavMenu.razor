@@ -1,0 +1,101 @@
+﻿@using SkopeoWebsite.Components.UI
+
+<!-- Fixed Navigation -->
+<nav class="fixed top-0 w-full bg-white/10 backdrop-blur-xl border-b border-white/20 z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex items-center">
+                <div class="flex-shrink-0">
+                    <a href="/" class="text-3xl font-bold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent hover:scale-105 transition-transform duration-300">
+                        Skopeo Studio
+                    </a>
+                </div>
+            </div>
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-center space-x-2">
+                    <NavLink href="/" class="relative group text-white hover:text-cyan-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10" Match="NavLinkMatch.All">
+                        <span class="relative z-10">Главная</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </NavLink>
+                    <a href="#features" class="relative group text-white hover:text-cyan-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10">
+                        <span class="relative z-10">Возможности</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </a>
+                    <a href="#about" class="relative group text-white hover:text-cyan-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10">
+                        <span class="relative z-10">О нас</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </a>
+                    <NavLink href="/suits" class="relative group text-white hover:text-purple-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10">
+                        <span class="relative z-10">Костюмы</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </NavLink>
+                    <NavLink href="/survey" class="relative group text-white hover:text-purple-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10">
+                        <span class="relative z-10">Опросы</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </NavLink>
+                    <NavLink href="/market-research" class="relative group text-white hover:text-purple-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10">
+                        <span class="relative z-10">Исследования</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </NavLink>
+                    <a href="#contact" class="relative group text-white hover:text-green-400 px-4 py-2 text-lg font-medium transition-all duration-300 rounded-xl hover:bg-white/10">
+                        <span class="relative z-10">Контакты</span>
+                        <div class="absolute inset-0 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-xl scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                    </a>
+                </div>
+            </div>
+            <Button Variant="Button.ButtonVariant.Primary" class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 border-0 px-6 py-3 text-lg font-semibold transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl">
+                Начать
+            </Button>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button @onclick="ToggleNavMenu" class="inline-flex items-center justify-center p-3 rounded-xl text-white hover:text-cyan-400 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 transition-all duration-300">
+                    @if (collapseNavMenu)
+                    {
+                        <Icon Name="menu" Size="w-7 h-7" />
+                    }
+                    else
+                    {
+                        <Icon Name="x" Size="w-7 h-7" />
+                    }
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="@($"md:hidden {(collapseNavMenu ? "hidden" : "")}")">
+        <div class="px-4 pt-4 pb-6 space-y-2 bg-white/10 backdrop-blur-xl border-t border-white/20">
+            <NavLink href="/" class="text-white hover:text-cyan-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300" Match="NavLinkMatch.All">
+                Главная
+            </NavLink>
+            <a href="#features" class="text-white hover:text-cyan-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300">
+                Возможности
+            </a>
+            <a href="#about" class="text-white hover:text-cyan-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300">
+                О нас
+            </a>
+            <NavLink href="/suits" class="text-white hover:text-purple-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300">
+                Костюмы
+            </NavLink>
+            <NavLink href="/survey" class="text-white hover:text-purple-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300">
+                Опросы
+            </NavLink>
+            <NavLink href="/market-research" class="text-white hover:text-purple-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300">
+                Исследования
+            </NavLink>
+            <a href="#contact" class="text-white hover:text-green-400 hover:bg-white/10 block px-4 py-3 text-lg font-medium rounded-xl transition-all duration-300">
+                Контакты
+            </a>
+        </div>
+    </div>
+</nav>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

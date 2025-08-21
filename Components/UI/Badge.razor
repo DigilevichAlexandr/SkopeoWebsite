@@ -1,0 +1,48 @@
+<span class="@GetClasses()" @attributes="AdditionalAttributes">
+    @ChildContent
+</span>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public BadgeVariant Variant { get; set; } = BadgeVariant.Primary;
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string GetClasses()
+    {
+        var classes = new List<string>
+        {
+            "inline-flex",
+            "items-center",
+            "px-3",
+            "py-1",
+            "rounded-full",
+            "text-sm",
+            "font-medium"
+        };
+
+        classes.AddRange(Variant switch
+        {
+            BadgeVariant.Primary => new[] { "bg-blue-100", "text-blue-800" },
+            BadgeVariant.Secondary => new[] { "bg-gray-100", "text-gray-800" },
+            BadgeVariant.Success => new[] { "bg-green-100", "text-green-800" },
+            BadgeVariant.Warning => new[] { "bg-yellow-100", "text-yellow-800" },
+            BadgeVariant.Danger => new[] { "bg-red-100", "text-red-800" },
+            BadgeVariant.Purple => new[] { "bg-purple-100", "text-purple-800" },
+            BadgeVariant.Outline => new[] { "border", "border-gray-300", "text-gray-700", "bg-transparent" },
+            _ => new[] { "bg-blue-100", "text-blue-800" }
+        });
+
+        return string.Join(" ", classes);
+    }
+
+    public enum BadgeVariant
+    {
+        Primary,
+        Secondary,
+        Success,
+        Warning,
+        Danger,
+        Purple,
+        Outline
+    }
+}

@@ -1,0 +1,33 @@
+<div class="@GetClasses()" @attributes="AdditionalAttributes">
+    @ChildContent
+</div>
+
+@code {
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public bool Hover { get; set; } = true;
+    [Parameter] public string? BorderAccent { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public Dictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string GetClasses()
+    {
+        var classes = new List<string>
+        {
+            "bg-white",
+            "rounded-xl",
+            "shadow-md",
+            "overflow-hidden"
+        };
+
+        if (Hover)
+        {
+            classes.AddRange(new[] { "hover:shadow-lg", "transition-shadow", "duration-300" });
+        }
+
+        if (!string.IsNullOrEmpty(BorderAccent))
+        {
+            classes.AddRange(new[] { "border-l-4", $"border-l-{BorderAccent}" });
+        }
+
+        return string.Join(" ", classes);
+    }
+}
