@@ -1,73 +1,64 @@
-name: Deploy to GitHub Pages
+name: Deploy Blazor Website
 
-# Run workflow on every push to the main branch
 on:
   push:
     branches: [ main, master ]
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
-  deploy-to-github-pages:
+  build-and-deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
     steps:
-      # Checkout the code
-      - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      # Install .NET Core SDK
-      - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: '9.0.x'
+    - name: Setup .NET 8
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '8.0.x'
 
-      # Install Node.js for TailwindCSS
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
 
-      # Restore dependencies
-      - name: Restore dependencies
-        run: dotnet restore
+    - name: Configure GitHub Pages
+      uses: actions/configure-pages@v3
 
-      # Install npm dependencies
-      - name: Install npm dependencies
-        run: npm install
+    - name: Restore .NET dependencies
+      working-directory: ./SkopeoWebsite
+      run: dotnet restore
 
-      # Build TailwindCSS
-      - name: Build TailwindCSS
-        run: npx tailwindcss -i ./wwwroot/css/app.css -o ./wwwroot/css/tailwind.css --minify
+    - name: Install npm dependencies
+      working-directory: ./SkopeoWebsite
+      run: npm ci
 
-      # Publish the app
-      - name: Publish .NET Core Project
-        run: dotnet publish SkopeoWebsite.csproj -c Release -o release --nologo
-        
-      # Change base-tag in index.html from / to Skopeo to match GitHub Pages repository subdirectory
-      - name: Change base-tag in index.html
-        run: sed -i 's/<base href="\/" \/>/<base href="\/Skopeo\/" \/>/g' release/wwwroot/index.html
-        
-      # Copy index.html to 404.html to serve the same file when a file is not found
-      - name: copy index.html to 404.html to serve the same file when a file is not found
-        run: cp release/wwwroot/index.html release/wwwroot/404.html
+    - name: Build Tailwind CSS
+      working-directory: ./SkopeoWebsite
+      run: npm run build
 
-      # Add .nojekyll file to tell GitHub Pages to not treat this as a Jekyll project
-      - name: Add .nojekyll file
-        run: touch release/wwwroot/.nojekyll
-        
-      # Setup GitHub Pages
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
+    - name: Publish Blazor app
+      working-directory: ./SkopeoWebsite
+      run: dotnet publish -c Release -o ../publish --nologo
 
-      # Upload artifact for GitHub Pages
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: release/wwwroot
+    - name: Fix base path for GitHub Pages
+      run: |
+        sed -i 's/<base href="\/" \/>/<base href="\/SkopeoWebsite\/" \/>/g' publish/wwwroot/index.html
 
-      # Deploy to GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v2
+    - name: Upload Pages artifact
+      uses: actions/upload-pages-artifact@v2
+      with:
+        path: ./publish/wwwroot
+
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v2
