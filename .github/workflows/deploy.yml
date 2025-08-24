@@ -23,7 +23,7 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Publish Blazor WebAssembly
-        run: dotnet publish ./YourProjectName/YourProjectName.csproj -c Release -o release --nologo
+        run: dotnet publish ./SkopeoWebsite/SkopeoWebsite.csproj -c Release -o release --nologo
 
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
