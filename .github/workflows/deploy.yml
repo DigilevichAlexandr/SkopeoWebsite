@@ -33,7 +33,12 @@ jobs:
           mv temp.json release/wwwroot/_framework/blazor.boot.json
           jq '.resources.jsModuleRuntime |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
-          # Add similar for other sections if needed
+          jq '.resources.jsModuleNative |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          mv temp.json release/wwwroot/_framework/blazor.boot.json
+          jq '.resources.wasmNative |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          mv temp.json release/wwwroot/_framework/blazor.boot.json
+          jq '.resources.icu |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          mv temp.json release/wwwroot/_framework/blazor.boot.json
       
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
