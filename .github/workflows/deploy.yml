@@ -24,7 +24,17 @@ jobs:
 
       - name: Publish Blazor WebAssembly
         run: dotnet publish ./SkopeoWebsite.csproj -c Release -o release --nologo
-
+      
+      - name: Fix blazor.boot.json paths for GitHub Pages
+        run: |
+          jq '.resources.assembly |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          mv temp.json release/wwwroot/_framework/blazor.boot.json
+          jq '.resources.pdb |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          mv temp.json release/wwwroot/_framework/blazor.boot.json
+          jq '.resources.jsModuleRuntime |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          mv temp.json release/wwwroot/_framework/blazor.boot.json
+          # Add similar for other sections if needed
+      
       - name: Add .nojekyll file
         run: touch release/wwwroot/.nojekyll
 
