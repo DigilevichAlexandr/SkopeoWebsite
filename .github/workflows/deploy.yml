@@ -27,17 +27,28 @@ jobs:
       
       - name: Fix blazor.boot.json paths for GitHub Pages
         run: |
-          jq '.resources.assembly |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          # Fix assembly paths (only if not null)
+          jq 'if .resources.assembly != null then .resources.assembly |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key) else . end' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
-          jq '.resources.pdb |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          
+          # Fix pdb paths (only if not null)
+          jq 'if .resources.pdb != null then .resources.pdb |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key) else . end' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
-          jq '.resources.jsModuleRuntime |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          
+          # Fix jsModuleRuntime paths (only if not null)
+          jq 'if .resources.jsModuleRuntime != null then .resources.jsModuleRuntime |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key) else . end' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
-          jq '.resources.jsModuleNative |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          
+          # Fix jsModuleNative paths (only if not null)
+          jq 'if .resources.jsModuleNative != null then .resources.jsModuleNative |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key) else . end' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
-          jq '.resources.wasmNative |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          
+          # Fix wasmNative paths (only if not null)
+          jq 'if .resources.wasmNative != null then .resources.wasmNative |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key) else . end' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
-          jq '.resources.icu |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key)' release/wwwroot/_framework/blazor.boot.json > temp.json
+          
+          # Fix icu paths (only if not null)
+          jq 'if .resources.icu != null then .resources.icu |= with_entries(.key = "/SkopeoWebsite/_framework/" + .key) else . end' release/wwwroot/_framework/blazor.boot.json > temp.json
           mv temp.json release/wwwroot/_framework/blazor.boot.json
       
       - name: Add .nojekyll file
