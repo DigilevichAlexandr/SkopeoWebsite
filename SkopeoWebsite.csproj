@@ -6,8 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<ServiceWorkerAssetsManifest></ServiceWorkerAssetsManifest>
 		<BlazorWebAssemblyLoadBootResource>false</BlazorWebAssemblyLoadBootResource>
-		<PublishTrimmed>true</PublishTrimmed>
-		<TrimMode>link</TrimMode>
+		<PublishTrimmed>false</PublishTrimmed>
 	</PropertyGroup>
 
 	<ItemGroup>
