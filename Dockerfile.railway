@@ -3,17 +3,11 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 
 WORKDIR /app
 
-# Копируем файл проекта
-COPY SkopeoWebsite.csproj .
-
-# Восстанавливаем зависимости
-RUN dotnet restore
-
 # Копируем весь исходный код
 COPY . .
 
-# Собираем приложение
-RUN dotnet publish -c Release -o /app/publish --no-restore
+# Восстанавливаем зависимости и собираем приложение
+RUN dotnet restore && dotnet publish -c Release -o /app/publish
 
 # Используем nginx для статического контента
 FROM nginx:alpine
