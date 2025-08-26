@@ -5,7 +5,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Marketing Insights - Маркетинговые исследования</title>
-    <base href="/SkopeoWebsite/" />
+    <base href="/" />
+    <script>
+        (function () {
+            try {
+                var isGitHubPages = location.hostname.endsWith('github.io');
+                if (isGitHubPages) {
+                    var base = document.querySelector('base');
+                    if (base) base.setAttribute('href', '/SkopeoWebsite/');
+                }
+            } catch (e) {
+                // noop
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="css/tailwind.css" />
     <link rel="stylesheet" href="css/app.css" />
     <link rel="icon" type="image/png" href="favicon.png" />
@@ -25,7 +38,7 @@
         <a href="." class="reload">Reload</a>
         <span class="dismiss">🗙</span>
     </div>
-    <script src="_framework/dotnet.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
 </body>
 
 </html>
