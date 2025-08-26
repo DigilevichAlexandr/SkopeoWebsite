@@ -1,5 +1,6 @@
-# Используем официальный образ .NET 7 SDK для сборки
+# Простой Dockerfile для Railway
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+
 WORKDIR /app
 
 # Копируем файл проекта
@@ -15,14 +16,27 @@ COPY . .
 RUN dotnet publish -c Release -o /app/publish --no-restore
 
 # Используем nginx для статического контента
-FROM nginx:alpine AS final
+FROM nginx:alpine
+
 WORKDIR /usr/share/nginx/html
 
 # Копируем собранное приложение
 COPY --from=build /app/publish/wwwroot .
 
-# Копируем конфигурацию nginx для SPA
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Простая конфигурация nginx
+RUN echo 'server { \
+    listen 80; \
+    server_name localhost; \
+    root /usr/share/nginx/html; \
+    index index.html; \
+    location / { \
+        try_files $uri $uri/ /index.html; \
+    } \
+    location /_framework/ { \
+        expires 1y; \
+        add_header Cache-Control "public, immutable"; \
+    } \
+}' > /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 
