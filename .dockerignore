@@ -1,0 +1,17 @@
+bin/
+obj/
+out/
+.git/
+.gitignore
+README.md
+Dockerfile*
+docker-compose*
+.dockerignore
+.vs/
+.vscode/
+*.user
+*.suo
+*.cache
+node_modules/
+npm-debug.log
+yarn-error.log
