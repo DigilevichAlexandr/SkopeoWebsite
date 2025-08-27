@@ -1,0 +1,23 @@
+# Простой Dockerfile с .NET сервером
+FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+
+WORKDIR /app
+
+# Копируем весь исходный код
+COPY . .
+
+# Восстанавливаем зависимости и собираем приложение
+RUN dotnet restore && dotnet publish -c Release -o /app/publish
+
+# Используем runtime образ
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
+
+WORKDIR /app
+
+# Копируем собранное приложение
+COPY --from=build /app/publish .
+
+EXPOSE ${PORT}
+
+# Запускаем приложение
+CMD ["dotnet", "SkopeoWebsite.dll", "--urls", "http://0.0.0.0:${PORT}"]
