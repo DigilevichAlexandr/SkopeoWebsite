@@ -27,23 +27,23 @@ else
         <main class="admin-main">
             <div class="admin-sidebar">
                 <nav class="admin-nav">
-                    <button @onclick="() => activeTab = "content")" 
-                            class="nav-btn @(activeTab == "content" ? "active" : "")">
+                    <button @onclick="() => activeTab = TAB_CONTENT" 
+                            class="nav-btn @(activeTab == TAB_CONTENT ? CSS_ACTIVE : CSS_EMPTY)">
                         📝 Управление контентом
                     </button>
-                    <button @onclick="() => activeTab = "pages")" 
-                            class="nav-btn @(activeTab == "pages" ? "active" : "")">
+                    <button @onclick="() => activeTab = TAB_PAGES" 
+                            class="nav-btn @(activeTab == TAB_PAGES ? CSS_ACTIVE : CSS_EMPTY)">
                         📄 Страницы
                     </button>
-                    <button @onclick="() => activeTab = "settings")" 
-                            class="nav-btn @(activeTab == "settings" ? "active" : "")">
+                    <button @onclick="() => activeTab = TAB_SETTINGS" 
+                            class="nav-btn @(activeTab == TAB_SETTINGS ? CSS_ACTIVE : CSS_EMPTY)">
                         ⚙️ Настройки
                     </button>
                 </nav>
             </div>
 
             <div class="admin-content">
-                @if (activeTab == "content")
+                @if (activeTab == TAB_CONTENT)
                 {
                     <div class="content-tab">
                         <h2>📝 Управление контентом</h2>
@@ -85,7 +85,7 @@ else
                         </div>
                     </div>
                 }
-                else if (activeTab == "pages")
+                else if (activeTab == TAB_PAGES)
                 {
                     <div class="pages-tab">
                         <h2>📄 Управление страницами</h2>
@@ -95,9 +95,9 @@ else
                             {
                                 <div class="page-item">
                                     <div class="page-info">
-                                        <h4>@page.Title</h4>
-                                        <p>@page.Description</p>
-                                        <small>URL: @page.Url</small>
+                                        <h4>@(page.Title)</h4>
+                                        <p>@(page.Description)</p>
+                                        <small>URL: @(page.Url)</small>
                                     </div>
                                     <div class="page-actions">
                                         <button @onclick="() => EditPage(page)" class="edit-btn">✏️</button>
@@ -110,7 +110,7 @@ else
                         <button @onclick="AddNewPage" class="add-btn">➕ Добавить страницу</button>
                     </div>
                 }
-                else if (activeTab == "settings")
+                else if (activeTab == TAB_SETTINGS)
                 {
                     <div class="settings-tab">
                         <h2>⚙️ Настройки сайта</h2>
@@ -148,6 +148,15 @@ else
 @code {
     private bool isAuthenticated = false;
     private string activeTab = "content";
+    
+    // Константы для вкладок
+    private const string TAB_CONTENT = "content";
+    private const string TAB_PAGES = "pages";
+    private const string TAB_SETTINGS = "settings";
+    
+    // CSS классы
+    private const string CSS_ACTIVE = "active";
+    private const string CSS_EMPTY = "";
     
     // Контент сайта
     private string siteTitle = "Marketing Insights";
@@ -234,9 +243,10 @@ else
         StateHasChanged();
     }
 
-    private void HandleLogoUpload(InputFileChangeEventArgs e)
+    private void HandleLogoUpload()
     {
         // Логика загрузки логотипа
+        // TODO: Реализовать загрузку файла
     }
 
     private async Task ChangePassword()
