@@ -1,0 +1,100 @@
+@page "/admin/login"
+@using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+
+<PageTitle>Вход в админ-панель - Marketing Insights</PageTitle>
+
+<div class="admin-login-container">
+    <div class="admin-login-card">
+        <div class="admin-login-header">
+            <h1>🔐 Админ-панель</h1>
+            <p>Войдите для управления сайтом</p>
+        </div>
+
+        @if (showError)
+        {
+            <div class="error-message">
+                ❌ Неверный логин или пароль
+            </div>
+        }
+
+        <form @onsubmit="HandleLogin" class="admin-login-form">
+            <div class="form-group">
+                <label for="username">Логин:</label>
+                <input 
+                    id="username"
+                    type="text" 
+                    @bind="username" 
+                    @bind:event="oninput"
+                    placeholder="Введите логин"
+                    required
+                    autocomplete="username"
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль:</label>
+                <input 
+                    id="password"
+                    type="password" 
+                    @bind="password" 
+                    @bind:event="oninput"
+                    placeholder="Введите пароль"
+                    required
+                    autocomplete="current-password"
+                />
+            </div>
+
+            <button type="submit" class="login-btn" disabled="@isLoading">
+                @if (isLoading)
+                {
+                    <span>Вход...</span>
+                }
+                else
+                {
+                    <span>🚀 Войти</span>
+                }
+            </button>
+        </form>
+
+        <div class="admin-login-footer">
+            <small>Marketing Insights - Система управления контентом</small>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string username = "";
+    private string password = "";
+    private bool showError = false;
+    private bool isLoading = false;
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        showError = false;
+
+        // Имитация задержки для UX
+        await Task.Delay(500);
+
+        // Проверка логина и пароля
+        if (username == "artem" && password == "qwer1234")
+        {
+            // Устанавливаем флаг авторизации
+            await JS.InvokeVoidAsync("localStorage.setItem", "adminAuthenticated", "true");
+            
+            // Перенаправляем на админ-панель
+            NavigationManager.NavigateTo("/admin/dashboard");
+        }
+        else
+        {
+            showError = true;
+            password = ""; // Очищаем пароль при ошибке
+        }
+
+        isLoading = false;
+    }
+
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+}

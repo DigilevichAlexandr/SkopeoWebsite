@@ -1,0 +1,269 @@
+@page "/admin/dashboard"
+@using Microsoft.AspNetCore.Components
+@using Microsoft.JSInterop
+
+<PageTitle>Админ-панель - Marketing Insights</PageTitle>
+
+@if (!isAuthenticated)
+{
+    <div class="admin-loading">
+        <div class="loading-spinner"></div>
+        <p>Проверка авторизации...</p>
+    </div>
+}
+else
+{
+    <div class="admin-dashboard">
+        <header class="admin-header">
+            <div class="admin-header-content">
+                <h1>🎛️ Админ-панель</h1>
+                <div class="admin-user-info">
+                    <span>👤 Администратор</span>
+                    <button @onclick="Logout" class="logout-btn">🚪 Выйти</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="admin-main">
+            <div class="admin-sidebar">
+                <nav class="admin-nav">
+                    <button @onclick="() => activeTab = "content")" 
+                            class="nav-btn @(activeTab == "content" ? "active" : "")">
+                        📝 Управление контентом
+                    </button>
+                    <button @onclick="() => activeTab = "pages")" 
+                            class="nav-btn @(activeTab == "pages" ? "active" : "")">
+                        📄 Страницы
+                    </button>
+                    <button @onclick="() => activeTab = "settings")" 
+                            class="nav-btn @(activeTab == "settings" ? "active" : "")">
+                        ⚙️ Настройки
+                    </button>
+                </nav>
+            </div>
+
+            <div class="admin-content">
+                @if (activeTab == "content")
+                {
+                    <div class="content-tab">
+                        <h2>📝 Управление контентом</h2>
+                        
+                        <div class="content-section">
+                            <h3>🏠 Главная страница</h3>
+                            <div class="form-group">
+                                <label>Заголовок сайта:</label>
+                                <input @bind="siteTitle" @bind:event="oninput" placeholder="Marketing Insights" />
+                            </div>
+                            <div class="form-group">
+                                <label>Подзаголовок:</label>
+                                <input @bind="siteSubtitle" @bind:event="oninput" placeholder="Маркетинговые исследования" />
+                            </div>
+                            <div class="form-group">
+                                <label>Описание:</label>
+                                <textarea @bind="siteDescription" @bind:event="oninput" rows="3" 
+                                          placeholder="Описание вашего сайта..."></textarea>
+                            </div>
+                            <button @onclick="SaveSiteContent" class="save-btn">💾 Сохранить</button>
+                        </div>
+
+                        <div class="content-section">
+                            <h3>📊 Статистика</h3>
+                            <div class="stats-grid">
+                                <div class="stat-card">
+                                    <div class="stat-number">@totalPages</div>
+                                    <div class="stat-label">Страниц</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">@totalContent</div>
+                                    <div class="stat-label">Блоков контента</div>
+                                </div>
+                                <div class="stat-card">
+                                    <div class="stat-number">@lastUpdate.ToString("dd.MM.yyyy")</div>
+                                    <div class="stat-label">Последнее обновление</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (activeTab == "pages")
+                {
+                    <div class="pages-tab">
+                        <h2>📄 Управление страницами</h2>
+                        
+                        <div class="pages-list">
+                            @foreach (var page in pages)
+                            {
+                                <div class="page-item">
+                                    <div class="page-info">
+                                        <h4>@page.Title</h4>
+                                        <p>@page.Description</p>
+                                        <small>URL: @page.Url</small>
+                                    </div>
+                                    <div class="page-actions">
+                                        <button @onclick="() => EditPage(page)" class="edit-btn">✏️</button>
+                                        <button @onclick="() => DeletePage(page)" class="delete-btn">🗑️</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <button @onclick="AddNewPage" class="add-btn">➕ Добавить страницу</button>
+                    </div>
+                }
+                else if (activeTab == "settings")
+                {
+                    <div class="settings-tab">
+                        <h2>⚙️ Настройки сайта</h2>
+                        
+                        <div class="settings-section">
+                            <h3>🎨 Внешний вид</h3>
+                            <div class="form-group">
+                                <label>Основной цвет:</label>
+                                <input type="color" @bind="primaryColor" @bind:event="oninput" />
+                            </div>
+                            <div class="form-group">
+                                <label>Логотип:</label>
+                                <input type="file" accept="image/*" @onchange="HandleLogoUpload" />
+                            </div>
+                        </div>
+
+                        <div class="settings-section">
+                            <h3>🔒 Безопасность</h3>
+                            <div class="form-group">
+                                <label>Изменить пароль админа:</label>
+                                <input type="password" @bind="newPassword" @bind:event="oninput" 
+                                       placeholder="Новый пароль" />
+                                <button @onclick="ChangePassword" class="change-pwd-btn">🔑 Изменить</button>
+                            </div>
+                        </div>
+
+                        <button @onclick="SaveSettings" class="save-btn">💾 Сохранить настройки</button>
+                    </div>
+                }
+            </div>
+        </main>
+    </div>
+}
+
+@code {
+    private bool isAuthenticated = false;
+    private string activeTab = "content";
+    
+    // Контент сайта
+    private string siteTitle = "Marketing Insights";
+    private string siteSubtitle = "Маркетинговые исследования";
+    private string siteDescription = "Профессиональные маркетинговые исследования и аналитика";
+    
+    // Статистика
+    private int totalPages = 5;
+    private int totalContent = 12;
+    private DateTime lastUpdate = DateTime.Now;
+    
+    // Страницы
+    private List<PageInfo> pages = new()
+    {
+        new PageInfo { Title = "Главная", Description = "Домашняя страница", Url = "/" },
+        new PageInfo { Title = "Услуги", Description = "Наши услуги", Url = "/services" },
+        new PageInfo { Title = "О нас", Description = "Информация о компании", Url = "/about" },
+        new PageInfo { Title = "Контакты", Description = "Связаться с нами", Url = "/contact" },
+        new PageInfo { Title = "Блог", Description = "Статьи и новости", Url = "/blog" }
+    };
+    
+    // Настройки
+    private string primaryColor = "#1e40af";
+    private string newPassword = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CheckAuthentication();
+    }
+
+    private async Task CheckAuthentication()
+    {
+        try
+        {
+            var authStatus = await JS.InvokeAsync<string>("localStorage.getItem", "adminAuthenticated");
+            isAuthenticated = authStatus == "true";
+            
+            if (!isAuthenticated)
+            {
+                NavigationManager.NavigateTo("/admin/login");
+            }
+        }
+        catch
+        {
+            NavigationManager.NavigateTo("/admin/login");
+        }
+    }
+
+    private async Task Logout()
+    {
+        await JS.InvokeVoidAsync("localStorage.removeItem", "adminAuthenticated");
+        NavigationManager.NavigateTo("/admin/login");
+    }
+
+    private async Task SaveSiteContent()
+    {
+        // Здесь будет логика сохранения в базу данных или файл
+        await Task.Delay(500);
+        lastUpdate = DateTime.Now;
+        StateHasChanged();
+    }
+
+    private void EditPage(PageInfo page)
+    {
+        // Логика редактирования страницы
+    }
+
+    private void DeletePage(PageInfo page)
+    {
+        pages.Remove(page);
+        totalPages = pages.Count;
+        StateHasChanged();
+    }
+
+    private void AddNewPage()
+    {
+        pages.Add(new PageInfo 
+        { 
+            Title = "Новая страница", 
+            Description = "Описание новой страницы", 
+            Url = "/new-page" 
+        });
+        totalPages = pages.Count;
+        StateHasChanged();
+    }
+
+    private void HandleLogoUpload(InputFileChangeEventArgs e)
+    {
+        // Логика загрузки логотипа
+    }
+
+    private async Task ChangePassword()
+    {
+        if (!string.IsNullOrEmpty(newPassword))
+        {
+            // Здесь будет логика изменения пароля
+            await Task.Delay(500);
+            newPassword = "";
+            StateHasChanged();
+        }
+    }
+
+    private async Task SaveSettings()
+    {
+        // Логика сохранения настроек
+        await Task.Delay(500);
+        StateHasChanged();
+    }
+
+    [Inject] private NavigationManager NavigationManager { get; set; } = default!;
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+
+    public class PageInfo
+    {
+        public string Title { get; set; } = "";
+        public string Description { get; set; } = "";
+        public string Url { get; set; } = "";
+    }
+}
