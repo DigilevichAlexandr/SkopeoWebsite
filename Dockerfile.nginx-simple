@@ -1,25 +1,16 @@
-# Простой Dockerfile для Railway
+# Упрощённый Dockerfile с nginx на порту 8080
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-
 WORKDIR /app
-
-# Копируем весь исходный код
 COPY . .
-
-# Восстанавливаем зависимости и собираем приложение
 RUN dotnet restore && dotnet publish -c Release -o /app/publish
 
-# Используем nginx для статического контента
 FROM nginx:alpine
-
 WORKDIR /usr/share/nginx/html
-
-# Копируем собранное приложение
 COPY --from=build /app/publish/wwwroot .
 
-# Создаём шаблон конфигурации nginx
+# Простая конфигурация nginx на порту 8080
 RUN echo 'server { \
-    listen ${PORT}; \
+    listen 8080; \
     server_name localhost; \
     root /usr/share/nginx/html; \
     index index.html; \
@@ -35,9 +26,8 @@ RUN echo 'server { \
         return 200 "healthy\n"; \
         add_header Content-Type text/plain; \
     } \
-}' > /etc/nginx/conf.d/default.conf.template
+}' > /etc/nginx/conf.d/default.conf
 
-EXPOSE ${PORT}
-ENV PORT=8080
+EXPOSE 8080
 
-CMD sh -c "envsubst '\${PORT}' < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && exec nginx -g 'daemon off;'"
+CMD ["nginx", "-g", "daemon off;"]
