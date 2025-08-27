@@ -1,32 +1,17 @@
-# Простой Dockerfile без nginx
+# Простейший Dockerfile для Railway
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
-
 WORKDIR /app
-
-# Копируем файл проекта
-COPY SkopeoWebsite.csproj .
-
-# Восстанавливаем зависимости
-RUN dotnet restore
-
-# Копируем весь исходный код
 COPY . .
+RUN dotnet restore && dotnet publish -c Release -o /app/publish
 
-# Собираем приложение
-RUN dotnet publish -c Release -o /app/publish --no-restore
-
-# Используем runtime образ
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS runtime
-
 WORKDIR /app
-
-# Копируем собранное приложение
 COPY --from=build /app/publish .
 
 # Создаём простой healthcheck endpoint
-RUN echo '#!/bin/bash\ncurl -f http://localhost:5000/ || exit 1' > /healthcheck.sh && chmod +x /healthcheck.sh
+RUN echo 'using Microsoft.AspNetCore.Builder; using Microsoft.Extensions.DependencyInjection; using Microsoft.Extensions.Hosting; var builder = WebApplication.CreateBuilder(args); builder.Services.AddRazorPages(); var app = builder.Build(); app.MapGet("/health", () => "healthy"); app.MapFallbackToFile("index.html"); app.Run();' > Program.cs
 
-EXPOSE 5000
+EXPOSE 80
+ENV ASPNETCORE_URLS="http://+:80"
 
-# Запускаем приложение
-CMD ["dotnet", "SkopeoWebsite.dll", "--urls", "http://0.0.0.0:5000"]
+CMD ["dotnet", "SkopeoWebsite.dll"]
